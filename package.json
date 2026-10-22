@@ -1,0 +1,13 @@
+{
+  "name": "do-re-ski",
+  "version": "1.0.0",
+  "description": "A tiny ski game where every lane is a note of the scale.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

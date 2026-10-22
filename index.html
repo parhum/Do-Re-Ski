@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Do Re Ski</title>
+  <meta name="description" content="A tiny ski game where every lane is a note of the scale. Steer through the gates to play the melody.">
+  <meta name="theme-color" content="#f1f5fa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#18223a" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grandstander:wght@600;800&family=Lexend:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <main class="app">
+    <canvas class="slope" id="slope" aria-label="Ski slope"></canvas>
+
+    <header class="hud gutter" id="hud" hidden>
+      <div class="hud-song">
+        <b id="hud-song"></b>
+        <span id="hud-key"></span>
+      </div>
+      <div class="chord" id="chord" title="Chord playing now">
+        <span class="chord-numeral" id="chord-numeral">–</span>
+        <span class="chord-name" id="chord-name">count-in</span>
+      </div>
+      <div class="score">
+        <b id="hud-score">0/0</b>
+        <span id="hud-streak"></span>
+      </div>
+      <button class="icon-button" id="mute-button" type="button" aria-label="Mute sound">♪</button>
+      <button class="icon-button" id="pause-button" type="button" aria-label="Pause">❚❚</button>
+    </header>
+
+    <section class="overlay gutter" id="menu" aria-labelledby="menu-title">
+      <div class="panel">
+        <div>
+          <h1 id="menu-title"><span class="do">Do</span> <span class="re">Re</span> <span class="ski">Ski</span></h1>
+          <p class="lede">Every lane on the slope is one note of the scale. Steer through the gates and you play the melody. Miss a lane and you’ll hear it.</p>
+        </div>
+        <fieldset class="field">
+          <legend class="field-label">Song</legend>
+          <div class="songs" id="song-list"></div>
+        </fieldset>
+        <div class="field-row">
+          <fieldset class="field">
+            <legend class="field-label">Key (major)</legend>
+            <div class="pills" id="key-options"></div>
+          </fieldset>
+          <fieldset class="field">
+            <legend class="field-label">Gate labels</legend>
+            <div class="pills" id="label-options"></div>
+          </fieldset>
+        </div>
+        <fieldset class="field">
+          <legend class="field-label">Slope</legend>
+          <div class="pills" id="difficulty-options"></div>
+        </fieldset>
+        <button class="button-primary" id="start-button" type="button">Drop in</button>
+        <p class="hint">Move the mouse or drag to steer · <kbd>←</kbd> <kbd>→</kbd> hop one lane · <kbd>Esc</kbd> pause</p>
+      </div>
+    </section>
+
+    <section class="overlay gutter" id="results" aria-labelledby="result-title" hidden>
+      <div class="panel panel-small">
+        <div class="stars" id="result-stars" role="img"></div>
+        <h2 id="result-title"></h2>
+        <div class="stats">
+          <div><b id="result-hits">0</b><span>Gates</span></div>
+          <div><b id="result-accuracy">0%</b><span>Right notes</span></div>
+          <div><b id="result-streak">0</b><span>Best streak</span></div>
+        </div>
+        <div class="lesson">
+          <h3>Lift-line lesson</h3>
+          <p id="result-lesson"></p>
+          <p id="result-key-tip"></p>
+        </div>
+        <div class="buttons">
+          <button class="button-primary" id="again-button" type="button">Ski it again</button>
+          <button class="button-secondary" id="menu-button" type="button">Pick another run</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="overlay gutter" id="pause" aria-labelledby="pause-title" hidden>
+      <div class="panel panel-small">
+        <h2 id="pause-title">Paused</h2>
+        <p class="hint">Catch your breath at the lift.</p>
+        <div class="buttons">
+          <button class="button-primary" id="resume-button" type="button">Keep skiing</button>
+          <button class="button-secondary" id="quit-button" type="button">Back to the lodge</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
